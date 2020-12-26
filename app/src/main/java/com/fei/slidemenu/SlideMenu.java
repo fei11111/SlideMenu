@@ -48,7 +48,7 @@ public class SlideMenu extends HorizontalScrollView {
         //获取属性值
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SlideMenu);
         mRightPadding = typedArray.getDimension(R.styleable.SlideMenu_rightPadding, dp2px(mRightPadding));
-        Log.e(TAG, "padding宽度" + mRightPadding);
+//        Log.e(TAG, "padding宽度" + mRightPadding);
         typedArray.recycle();
 
         mGestureDetector = new GestureDetector(context, mSimpleOnGestureListener);
@@ -60,7 +60,7 @@ public class SlideMenu extends HorizontalScrollView {
     private GestureDetector.SimpleOnGestureListener mSimpleOnGestureListener = new GestureDetector.SimpleOnGestureListener() {
         @Override
         public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-            Log.e(TAG, "velocityX = " + velocityX);
+//            Log.e(TAG, "velocityX = " + velocityX);
 
             // 判断手势快速滑动时，当前的状态去改变原有状态，所以不是判断scrollX,而是判断当前状态
             if (e2.getAction() == MotionEvent.ACTION_UP) {
@@ -99,12 +99,12 @@ public class SlideMenu extends HorizontalScrollView {
         mContentView = container.getChildAt(1);
 
         int screenWidth = getScreenWidth();
-        Log.e(TAG, "屏幕宽度:" + screenWidth);
+//        Log.e(TAG, "屏幕宽度:" + screenWidth);
 
         //重新设置menu宽度
         ViewGroup.LayoutParams layoutParams = mMenuView.getLayoutParams();
         mMenuWidth = (int) (screenWidth - mRightPadding);
-        Log.e(TAG, "菜单栏宽度:" + mMenuWidth);
+//        Log.e(TAG, "菜单栏宽度:" + mMenuWidth);
         layoutParams.width = mMenuWidth;
         mMenuView.setLayoutParams(layoutParams);
 
@@ -134,7 +134,7 @@ public class SlideMenu extends HorizontalScrollView {
     }
 
     /**
-     * 监听滚动
+     * 监听滚动，不管是手指滚动，还是调用系统方法滚动都会走这里
      */
     @Override
     protected void onScrollChanged(int l, int t, int oldl, int oldt) {
@@ -173,7 +173,7 @@ public class SlideMenu extends HorizontalScrollView {
                 break;
             case MotionEvent.ACTION_UP:
                 //手指抬起，判断菜单栏和内容需要滚动到哪个内容
-                Log.e(TAG, "scrollX" + scrollX);
+//                Log.e(TAG, "scrollX" + scrollX);
                 if (scrollX >= mMenuWidth / 2) {
                     //如果滚动条大于菜单宽度一半就关闭
                     closeMenu();
