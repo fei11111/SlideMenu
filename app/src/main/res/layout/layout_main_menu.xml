@@ -1,31 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#ffffff"
+    tools:context=".MainActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="200dp">
 
         <ImageView
+            android:id="@+id/iv_menu_bg"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:onClick="menuBg"
             android:scaleType="centerCrop"
             android:src="@drawable/home_menu_bg" />
 
         <TextView
+            android:id="@+id/tv_menu_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:layout_margin="15dp"
+            android:onClick="menuName"
             android:text="白色名字"
             android:textColor="#ffffff"
             android:textSize="22sp" />
     </RelativeLayout>
 
     <TextView
+        android:id="@+id/tv_menu_member"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/qq_setting_svip"
@@ -34,9 +42,11 @@
         android:padding="10dp"
         android:text="了解会员特权"
         android:textColor="#99000000"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:onClick="menuMenber"/>
 
     <TextView
+        android:id="@+id/tv_menu_money"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/qq_setting_qianbao"
@@ -45,10 +55,12 @@
         android:padding="10dp"
         android:text="QQ钱包"
         android:textColor="#99000000"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:onClick="menuMoney"/>
 
 
     <TextView
+        android:id="@+id/tv_menu_personal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/qq_setting_zhuangban"
@@ -57,9 +69,11 @@
         android:padding="10dp"
         android:text="个性装扮"
         android:textColor="#99000000"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:onClick="menuPersonal"/>
 
     <TextView
+        android:id="@+id/tv_menu_collection"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/qq_setting_shoucang"
@@ -68,9 +82,11 @@
         android:padding="10dp"
         android:text="我的收藏"
         android:textColor="#99000000"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:onClick="menuCollection"/>
 
     <TextView
+        android:id="@+id/tv_menu_gallery"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/qq_setting_xiangce"
@@ -79,7 +95,8 @@
         android:padding="10dp"
         android:text="我的相册"
         android:textColor="#99000000"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:onClick="menuGallery"/>
 
 
 </LinearLayout>
