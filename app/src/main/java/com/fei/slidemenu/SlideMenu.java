@@ -2,14 +2,15 @@ package com.fei.slidemenu;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 
@@ -30,6 +31,7 @@ public class SlideMenu extends HorizontalScrollView {
     private float mRightPadding = 50;//默认离右边的距离
     private View mMenuView;//菜单View
     private View mContentView;//内容View
+    private View mShadeView;//阴影View
     private int mMenuWidth = 0;//菜单宽度
     private boolean mIsMenuClose = true;//一进来时关闭状态
     private GestureDetector mGestureDetector;//拦截快速手势
@@ -111,7 +113,15 @@ public class SlideMenu extends HorizontalScrollView {
         //重新设置content宽度
         layoutParams = mContentView.getLayoutParams();
         layoutParams.width = screenWidth;
-        mContentView.setLayoutParams(layoutParams);
+        FrameLayout mContentContainer = new FrameLayout(getContext());
+        mContentContainer.setLayoutParams(layoutParams);
+        //移除原来的contentView
+        container.removeView(mContentView);
+        container.addView(mContentContainer);
+        mContentContainer.addView(mContentView);
+        mShadeView = new View(getContext());
+        mShadeView.setBackgroundColor(Color.BLACK);
+        mContentContainer.addView(mShadeView);
     }
 
     /**
@@ -206,6 +216,8 @@ public class SlideMenu extends HorizontalScrollView {
         float contentViewScale = 0.7f + percent * 0.3f;
         mContentView.setScaleX(contentViewScale);
         mContentView.setScaleY(contentViewScale);
+
+        mShadeView.setAlpha(0.5f * (1 - percent));//0.5~0
     }
 
 
